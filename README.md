@@ -27,4 +27,9 @@ This version uses pre-existing mock coordinate data stored in local storage
    The fetched weather data is styled and presented below the location address on the webpage.
 
 
+## Display
+
+![Screenshot 2024-10-28 at 13 35 27](https://github.com/user-attachments/assets/c4aff87d-d877-4c7c-aba8-4ca2345a2160)
+
+
 
