@@ -1,5 +1,5 @@
 (function () {
-  // A/B testing logic
+  // Randomise the chances of showing the weather widget
   let show = localStorage.getItem("showWeatherWidget");
   if (show === null) {
     show = Math.random() < 0.5;
@@ -9,7 +9,6 @@
   }
   if (!show) return;
 
-  // Get location latitude and longitude
   function getLocation() {
     const location = getCoordsFromMaps();
     if (location) return location;
@@ -17,7 +16,7 @@
     return null;
   }
 
-  // Get coordinates from Google Maps URL
+  // Using the coordinates from the map image URL
   function getCoordsFromMaps() {
     const map = document.querySelector(
       'picture > source[srcset*="maps.googleapis.com"]'
@@ -33,6 +32,7 @@
     return null;
   }
 
+  // Extracting the required coordinates from the map URL
   function extractCoordsFromMapURL(url) {
     try {
       const mapUrl = new URL(url);
@@ -61,6 +61,7 @@
     return null;
   }
 
+  // Creating the HTML element to display the weather information
   function displayWeather(data) {
     const weatherWidget = document.createElement("div");
     weatherWidget.classList.add(
@@ -81,7 +82,7 @@
       weatherWidget.innerHTML = `<p>Weather data is not available.</p>`;
     }
 
-    // Display weather information under location address
+    // Display weather information under location address at top of page
     const placeSummaryHeader = document.querySelector(
       ".Typographystyle__Paragraph-sc-86wkop-4.eKznUe.Placestyle__StyledAddress-sc-7yy3d-4.jiGhBZ"
     );
@@ -91,7 +92,7 @@
     }
   }
 
-  // Fetch weather data
+  // Fetch weather data from mock API
   function fetchWeather(lat, lon) {
     const appid = "a2ef86c41a";
     const url = `https://europe-west1-amigo-actions.cloudfunctions.net/recruitment-mock-weather-endpoint/forecast?appid=${appid}&lat=${lat}&lon=${lon}`;
